@@ -1,0 +1,5 @@
+Create requiments:
+    pip freeze > requirements.txt
+
+Import requiments:
+    pip install -r requirements.txt
