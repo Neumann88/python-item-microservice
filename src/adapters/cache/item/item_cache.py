@@ -27,8 +27,6 @@ class ItemCache:
 
     def set_item(self, item: Item):
         try:
-            print(type(item))
-            print(item)
             return self.cache.set(name=f"item.{item.id}", value=to_json(data=item))
         except Exception as err:
             raise err

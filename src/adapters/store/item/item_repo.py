@@ -25,7 +25,8 @@ class ItemRepository:
         curr = self.db.cursor()
 
         try:
-            data = curr.execute(query=query, vars=id)
+            curr.execute(query=query, vars=(id))
+            data = curr.fetchone()
             return Item(data[0], data[1])
         except Exception as err:
             self.db.rollback()
