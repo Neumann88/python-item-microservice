@@ -16,9 +16,8 @@ class ItemRepository:
             curr.execute(query=query, vars=(item.id, item.value))
             self.db.commit()
         except Exception as err:
+            self.db.rollback()
             raise err
-        finally:
-            curr.close()
 
 
     def get_item_by_id(self, id):
@@ -29,6 +28,5 @@ class ItemRepository:
             data = curr.execute(query=query, vars=id)
             return Item(data[0], data[1])
         except Exception as err:
+            self.db.rollback()
             raise err
-        finally:
-            curr.close()
